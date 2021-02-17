@@ -65,14 +65,27 @@ function launchModal() {
 
 
 // Fonctions permettant de tester chaque bouton ainsi que chaque entrée du formulaire
-
-
-
-
-
+//===== Test pour le prénom =====
+function firstNameChecking (firstName, error) {
+	let isValid = false;
+	if (firstName.value.length >=2) {
+		isValid = true;
+		error.style.display = "none"
+	}
+	else {
+		isValid = false;
+		error.style.display = "block"
+	}
+	console.log (isValid);	
+}
+ 
 
 // Fonction tout en 1 pour la précédente
-
+function checkingAll () {
+	firstName.addEventListener ("keyup", () => {
+		firstNameChecking(firstName, errorNum1);
+   });
+}
 
 
 
