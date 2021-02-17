@@ -63,3 +63,18 @@ function launchModal() {
 }
 
 
+
+// Fonctions permettant de tester chaque bouton ainsi que chaque entrée du formulaire
+
+
+
+
+
+
+// Fonction tout en 1 pour la précédente
+
+
+
+
+
+// event pour AJAX au submit avec l'utilisation de la fonction tout en 1
