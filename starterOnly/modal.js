@@ -185,7 +185,7 @@ function checkingAll () {
 	});
 }
 
-//===== Sending form & message =====
+//===== Sending form & message end =====
 ourForm.addEventListener('submit', function (event) {
 	event.preventDefault();
 	checkingAll();
