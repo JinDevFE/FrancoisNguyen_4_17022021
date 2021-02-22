@@ -133,14 +133,15 @@ function numTournamentChecking (qtyTournament, error) {
 	console.log (isValid);
 
 //===== Test for the input : radio button =====
-function radioChecking (inputRadioTest, error) {
+function radioChecking (inputs, error) {
 	let isValid = false;
-	if ((inputRadio1.checked || inputRadio2.checked || inputRadio3.checked || inputRadio4.checked || inputRadio5.checked || inputRadio6.checked) == true) { 
-		isValid = true;
-		error.style.display = "none"
-	}
-	else {
-		isValid = false;
+	inputs.forEach(input => {
+		if(input.checked){
+			isValid = true
+			error.style.display = "none"
+		}
+	});
+	if(!isValid){
 		error.style.display = "block"
 	}
 	console.log (isValid);	
@@ -169,25 +170,27 @@ function checkingAll () {
 		lastNameChecking(lastName, errorNum2);
 	});
 	eMailValid.addEventListener ("keyup", () => {
-		lastNameChecking(eMailValid, errorNum3);
+		eMailChecking(eMailValid, errorNum3);
 	});
-	birthdateValid.addEventListener ("keyup", () => {
-		lastNameChecking(birthdateValid, errorNum4);
+	birthdateValid.addEventListener ("change", () => {
+		birthdateChecking(birthdateValid, errorNum4);
 	});
 	qtyTournament.addEventListener ("keyup", () => {
-		lastNameChecking(qtyTournament, errorNum5);
+		numTournamentChecking(qtyTournament, errorNum5);
 	});
-	inputRadioTest.addEventListener ("keyup", () => {
-		lastNameChecking(inputRadioTest, errorNum6);
+	inputRadioTest.addEventListener ("change", () => {
+		radioChecking(inputRadioTest, errorNum6);
 	});
-	termAndCondition.addEventListener ("keyup", () => {
-		lastNameChecking(termAndCondition, errorNum7);
+	termAndCondition.addEventListener ("change", () => {
+		termChecking(termAndCondition, errorNum7);
 	});
 }
+checkingAll();
 
 //===== Sending form & message end =====
 ourForm.addEventListener('submit', function (event) {
 	event.preventDefault();
-	checkingAll();
+	radioChecking(inputRadioTest, errorNum6);
+	termChecking(termAndCondition, errorNum7);	
 	alert('Félicitation! Nous avons bien reçu votre inscription et nous vous confirmons votre réservation pour le prochain évènement Gaming. A bientôt!');
 });
