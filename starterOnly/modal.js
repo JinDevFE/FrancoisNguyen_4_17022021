@@ -185,10 +185,9 @@ function checkingAll () {
 	});
 }
 
-//===== Check & validition for our form + message =====
-ourForm.addEventListener('submit', function() {
-	checkingAll()
-	if()
-
-	alert('Félicitation! Nous avons bien reçu votre inscription et nous vous confirmons votre réservation pour le prochain évènement Gaming. A bientôt!')
-  })
+//===== Sending form & message =====
+ourForm.addEventListener('submit', function (event) {
+	event.preventDefault();
+	checkingAll();
+	alert('Félicitation! Nous avons bien reçu votre inscription et nous vous confirmons votre réservation pour le prochain évènement Gaming. A bientôt!');
+});
