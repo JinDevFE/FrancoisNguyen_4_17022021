@@ -21,12 +21,12 @@ const eMailValid = document.getElementById("email")
 const birthdateValid = document.getElementById('birthdate')
 const qtyTournament = document.getElementById('quantity')
 
-let inputRadio1 = document.getElementById('location1')
-let inputRadio2 = document.getElementById('location2')
-let inputRadio3 = document.getElementById('location3')
-let inputRadio4 = document.getElementById('location4')
-let inputRadio5 = document.getElementById('location5')
-let inputRadio6 = document.getElementById('location6')
+const inputRadio1 = document.getElementById('location1')
+const inputRadio2 = document.getElementById('location2')
+const inputRadio3 = document.getElementById('location3')
+const inputRadio4 = document.getElementById('location4')
+const inputRadio5 = document.getElementById('location5')
+const inputRadio6 = document.getElementById('location6')
 const inputRadioTest = [inputRadio1, inputRadio2, inputRadio3, inputRadio4, inputRadio5, inputRadio6];
 
 const termAndCondition = document.getElementById("checkbox1")
@@ -119,7 +119,7 @@ function birthdateChecking (birthdateValid, error) {
 
 //===== Test for the input : quantity of tournaments =====
 function numTournamentChecking (qtyTournament, error) {
-	const regexForNumTournament = RegExp (/^\d{3}$/);
+	const regexForNumTournament = RegExp (/^\d{2}$/);
 	let isValid = false;
 	let regexNumTournamentValid = regexForNumTournament.test (qtyTournament.value);
 	if (regexNumTournamentValid) {
