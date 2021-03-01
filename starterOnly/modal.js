@@ -172,16 +172,16 @@ function checkingAll () {
 	eMailValid.addEventListener ("keyup", () => {
 		eMailChecking(eMailValid, errorNum3);
 	});
-	birthdateValid.addEventListener ("change", () => {
+	birthdateValid.addEventListener ("onchange", () => {
 		birthdateChecking(birthdateValid, errorNum4);
 	});
 	qtyTournament.addEventListener ("keyup", () => {
 		numTournamentChecking(qtyTournament, errorNum5);
 	});
-	inputRadioTest.addEventListener ("change", () => {
+	inputRadioTest.addEventListener ("onchange", () => {
 		radioChecking(inputRadioTest, errorNum6);
 	});
-	termAndCondition.addEventListener ("change", () => {
+	termAndCondition.addEventListener ("onchange", () => {
 		termChecking(termAndCondition, errorNum7);
 	});
 }
