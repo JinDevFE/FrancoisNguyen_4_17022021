@@ -100,11 +100,13 @@ function eMailChecking (eMailValid, error) {
 		isValid = false;
 		error.style.display = "block"
 	}
-	console.log (isValid);	
+	console.log (isValid);
+}	
 
 //===== Test for the input : birthdate =====
 function birthdateChecking (birthdateValid, error) {
-	const regexForBirthdate = RegExp (/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{2}$/);
+	console.log(birthdateValid.value);
+	const regexForBirthdate = RegExp (/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/);
 	let isValid = false;
 	let regexBirthdateValid = regexForBirthdate.test (birthdateValid.value);
 	if (regexBirthdateValid) {
@@ -116,6 +118,7 @@ function birthdateChecking (birthdateValid, error) {
 		error.style.display = "block"
 	}
 	console.log (isValid);	
+}
 
 //===== Test for the input : quantity of tournaments =====
 function numTournamentChecking (qtyTournament, error) {
@@ -131,6 +134,7 @@ function numTournamentChecking (qtyTournament, error) {
 		error.style.display = "block"
 	}
 	console.log (isValid);
+}
 
 //===== Test for the input : radio button =====
 function radioChecking (inputs, error) {
@@ -172,20 +176,21 @@ function checkingAll () {
 	eMailValid.addEventListener ("keyup", () => {
 		eMailChecking(eMailValid, errorNum3);
 	});
-	birthdateValid.addEventListener ("onchange", () => {
+	birthdateValid.addEventListener ("change", () => {
 		birthdateChecking(birthdateValid, errorNum4);
 	});
 	qtyTournament.addEventListener ("keyup", () => {
 		numTournamentChecking(qtyTournament, errorNum5);
 	});
-	inputRadioTest.addEventListener ("onchange", () => {
+	inputRadioTest.addEventListener ("change", () => {
 		radioChecking(inputRadioTest, errorNum6);
 	});
-	termAndCondition.addEventListener ("onchange", () => {
+	termAndCondition.addEventListener ("change", () => {
 		termChecking(termAndCondition, errorNum7);
 	});
 }
-checkingAll();
+
+checkingAll ();
 
 //===== Sending form & message end =====
 ourForm.addEventListener('submit', function (event) {
@@ -193,4 +198,4 @@ ourForm.addEventListener('submit', function (event) {
 	radioChecking(inputRadioTest, errorNum6);
 	termChecking(termAndCondition, errorNum7);	
 	alert('Félicitation! Nous avons bien reçu votre inscription et nous vous confirmons votre réservation pour le prochain évènement Gaming. A bientôt!');
-});
+})
