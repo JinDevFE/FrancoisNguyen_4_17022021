@@ -64,13 +64,14 @@ function firstNameChecking (firstName, error) {
 	let isValid = false;
 	if (firstName.value.length >=2) {
 		isValid = true;
-		error.style.display = "none"
+		error.style.display = "none";
 	}
 	else {
 		isValid = false;
-		error.style.display = "block"
+		error.style.display = "block";
 	}
 	console.log (isValid);	
+	return isValid;
 }
 
 //===== Test for the input : lastname =====
@@ -78,13 +79,14 @@ function lastNameChecking (lastName, error) {
 	let isValid = false;
 	if (lastName.value.length >=2) {
 		isValid = true;
-		error.style.display = "none"
+		error.style.display = "none";
 	}
 	else {
 		isValid = false;
-		error.style.display = "block"
+		error.style.display = "block";
 	}
-	console.log (isValid);	
+	console.log (isValid);
+	return isValid;	
 }
  
 //===== Test for the input : mail =====
@@ -94,19 +96,50 @@ function eMailChecking (eMailValid, error) {
 	let regexValid = regexForEmail.test (eMailValid.value);
 	if (regexValid) {
 		isValid = true;
-		error.style.display = "none"
+		error.style.display = "none";
 	}
 	else {
 		isValid = false;
-		error.style.display = "block"
+		error.style.display = "block";
 	}
 	console.log (isValid);
+	return isValid;
 }	
 
 //===== Test for the input : birthdate =====
-function birthdateChecking (birthdateValid, error) {
+// let date = "29/02/2001";
+//let dateArray = date.split('/');
+let isValid = false;
+
+function isValidDate(year, month, day) {
+    var d = new Date(year, month - 1 , day);
+    console.log(d.getFullYear(), d.getMonth(), d.getDate() )
+    if (d.getFullYear() == year && d.getMonth() == (month - 1) && d.getDate() == day) {
+		isValid = true;
+		return isValid;
+		//error.style.display = "none"
+    }
+	 isValid = false;
+	 return isValid;
+	//error.style.display = "block"
+}
+
+function birthDateChecking(elt, error){
+	console.log(elt.value);
+	let dateArray = elt.value.split("-");
+	let valid = isValidDate(dateArray[0],dateArray[1], dateArray[2])
+	if(!valid){
+		error.style.display = "block";
+	}else{
+		error.style.display = "none";
+	}
+}
+
+// console.log(date, isValidDate(dateArray[2], dateArray[1], dateArray[0]))
+
+/* function birthdateChecking (birthdateValid, error) {
 	console.log(birthdateValid.value);
-	const regexForBirthdate = RegExp (/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/);
+	const regexForBirthdate = RegExp (/^(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$/);
 	let isValid = false;
 	let regexBirthdateValid = regexForBirthdate.test (birthdateValid.value);
 	if (regexBirthdateValid) {
@@ -118,7 +151,9 @@ function birthdateChecking (birthdateValid, error) {
 		error.style.display = "block"
 	}
 	console.log (isValid);	
-}
+} */
+
+// \d{4}(\-)(((0)[0-9])|((1)[0-2]))(\-)([0-2][0-9]|(3)[0-1]$/)
 
 //===== Test for the input : quantity of tournaments =====
 function numTournamentChecking (qtyTournament, error) {
@@ -127,13 +162,14 @@ function numTournamentChecking (qtyTournament, error) {
 	let regexNumTournamentValid = regexForNumTournament.test (qtyTournament.value);
 	if (regexNumTournamentValid) {
 		isValid = true;
-		error.style.display = "none"
+		error.style.display = "none";
 	}
 	else {
 		isValid = false;
-		error.style.display = "block"
+		error.style.display = "block";
 	}
 	console.log (isValid);
+	return isValid;
 }
 
 //===== Test for the input : radio button =====
@@ -142,11 +178,11 @@ function radioChecking (inputs, error) {
 	inputs.forEach(input => {
 		if(input.checked){
 			isValid = true
-			error.style.display = "none"
+			error.style.display = "none";
 		}
 	});
 	if(!isValid){
-		error.style.display = "block"
+		error.style.display = "block";
 	}
 	console.log (isValid);	
 }
@@ -156,13 +192,14 @@ function termChecking (termAndCondition, error) {
 	let isValid = false;
 	if (termAndCondition.checked) {
 		isValid = true;
-		error.style.display = "none"
+		error.style.display = "none";
 	}
 	else {
 		isValid = false;
-		error.style.display = "block"
+		error.style.display = "block";
 	}
 	console.log (isValid);	
+	return isValid;
 }
 
 //===== All in one =====
@@ -177,14 +214,14 @@ function checkingAll () {
 		eMailChecking(eMailValid, errorNum3);
 	});
 	birthdateValid.addEventListener ("change", () => {
-		birthdateChecking(birthdateValid, errorNum4);
+		birthDateChecking(birthdateValid, errorNum4);
 	});
 	qtyTournament.addEventListener ("keyup", () => {
 		numTournamentChecking(qtyTournament, errorNum5);
 	});
-	inputRadioTest.addEventListener ("change", () => {
+	/*inputRadioTest.addEventListener ("change", () => {
 		radioChecking(inputRadioTest, errorNum6);
-	});
+	});*/
 	termAndCondition.addEventListener ("change", () => {
 		termChecking(termAndCondition, errorNum7);
 	});
@@ -199,3 +236,4 @@ ourForm.addEventListener('submit', function (event) {
 	termChecking(termAndCondition, errorNum7);	
 	alert('Félicitation! Nous avons bien reçu votre inscription et nous vous confirmons votre réservation pour le prochain évènement Gaming. A bientôt!');
 })
+
