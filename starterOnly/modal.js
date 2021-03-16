@@ -185,6 +185,7 @@ function radioChecking (inputs, error) {
 		error.style.display = "block";
 	}
 	console.log (isValid);	
+	return isValid;
 }
 	
 //===== Test for the input : terms & conditions =====
@@ -219,21 +220,32 @@ function checkingAll () {
 	qtyTournament.addEventListener ("keyup", () => {
 		numTournamentChecking(qtyTournament, errorNum5);
 	});
-	/*inputRadioTest.addEventListener ("change", () => {
+	inputRadioTest.addEventListener ("change", () => {
 		radioChecking(inputRadioTest, errorNum6);
-	});*/
+	});
 	termAndCondition.addEventListener ("change", () => {
 		termChecking(termAndCondition, errorNum7);
 	});
 }
 
+/* checkingAll (); */
+
+/* document.getElementById('ourform').reset(); */
+
 checkingAll ();
+radioChecking(inputRadioTest, errorNum6);
+termChecking(termAndCondition, errorNum7);
 
 //===== Sending form & message end =====
 ourForm.addEventListener('submit', function (event) {
-	event.preventDefault();
+	checkingAll ();
 	radioChecking(inputRadioTest, errorNum6);
-	termChecking(termAndCondition, errorNum7);	
+	termChecking(termAndCondition, errorNum7);
+
+	if((firstNameChecking(firstName) && lastNameChecking(lastName) && eMailChecking(eMailValid) && birthDateChecking(elt) && numTournamentChecking(qtyTournament) && radioChecking(inputs) && termChecking(termAndCondition)) === false){
+		e.preventDefault()
+		return;
+	}
 	alert('Félicitation! Nous avons bien reçu votre inscription et nous vous confirmons votre réservation pour le prochain évènement Gaming. A bientôt!');
 })
 
