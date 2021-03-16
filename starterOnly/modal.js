@@ -220,9 +220,9 @@ function checkingAll () {
 	qtyTournament.addEventListener ("keyup", () => {
 		numTournamentChecking(qtyTournament, errorNum5);
 	});
-	inputRadioTest.addEventListener ("change", () => {
+	/*inputRadioTest.addEventListener ("change", () => {
 		radioChecking(inputRadioTest, errorNum6);
-	});
+	}); */
 	termAndCondition.addEventListener ("change", () => {
 		termChecking(termAndCondition, errorNum7);
 	});
@@ -243,7 +243,7 @@ ourForm.addEventListener('submit', function (event) {
 	termChecking(termAndCondition, errorNum7);
 
 	if((firstNameChecking(firstName) && lastNameChecking(lastName) && eMailChecking(eMailValid) && birthDateChecking(elt) && numTournamentChecking(qtyTournament) && radioChecking(inputs) && termChecking(termAndCondition)) === false){
-		e.preventDefault()
+		e.preventDefault();
 		return;
 	}
 	alert('Félicitation! Nous avons bien reçu votre inscription et nous vous confirmons votre réservation pour le prochain évènement Gaming. A bientôt!');
