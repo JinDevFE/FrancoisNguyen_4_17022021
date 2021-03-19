@@ -130,8 +130,10 @@ function birthDateChecking(elt, error){
 	let valid = isValidDate(dateArray[0],dateArray[1], dateArray[2])
 	if(!valid){
 		error.style.display = "block";
+		return false;
 	}else{
 		error.style.display = "none";
+		return true;
 	}
 }
 
@@ -220,9 +222,11 @@ function checkingAll () {
 	qtyTournament.addEventListener ("keyup", () => {
 		numTournamentChecking(qtyTournament, errorNum5);
 	});
-	/*inputRadioTest.addEventListener ("change", () => {
-		radioChecking(inputRadioTest, errorNum6);
-	}); */
+	inputRadioTest.forEach(radioBtn => {
+		radioBtn.addEventListener ("click", () => {
+			radioChecking(inputRadioTest, errorNum6);
+		});
+	});
 	termAndCondition.addEventListener ("change", () => {
 		termChecking(termAndCondition, errorNum7);
 	});
@@ -238,14 +242,21 @@ termChecking(termAndCondition, errorNum7);
 
 //===== Sending form & message end =====
 ourForm.addEventListener('submit', function (event) {
-	checkingAll ();
-	radioChecking(inputRadioTest, errorNum6);
-	termChecking(termAndCondition, errorNum7);
+	event.preventDefault();
+	let firstNameValid = firstNameChecking (firstName);
+	let lastNameValid = lastNameChecking (lastName);
+	let mailValid = eMailChecking (eMailValid);
+	let dateValid = birthDateChecking (birthdateValid);
+	let numValid = numTournamentChecking (qtyTournament);
+	let radioValid = radioChecking (inputRadioTest);
+	let termValid = termChecking (termAndCondition);
 
-	if((firstNameChecking(firstName) && lastNameChecking(lastName) && eMailChecking(eMailValid) && birthDateChecking(elt) && numTournamentChecking(qtyTournament) && radioChecking(inputs) && termChecking(termAndCondition)) === false){
+	if((firstNameValid && lastNameValid && mailValid && dateValid && numValid && radioValid && termValid) === false){
 		e.preventDefault();
 		return;
 	}
 	alert('Félicitation! Nous avons bien reçu votre inscription et nous vous confirmons votre réservation pour le prochain évènement Gaming. A bientôt!');
+	ourForm.requestFullscreen();
+	modalbg.style.display ="none";
 })
 
