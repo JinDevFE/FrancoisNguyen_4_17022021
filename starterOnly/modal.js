@@ -31,13 +31,13 @@ const inputRadioTest = [inputRadio1, inputRadio2, inputRadio3, inputRadio4, inpu
 
 const termAndCondition = document.getElementById("checkbox1")
 
-const errorNum1 = document.getElementById('error#1')
-const errorNum2 = document.getElementById('error#2')
-const errorNum3 = document.getElementById('error#3')
-const errorNum4 = document.getElementById('error#4')
-const errorNum5 = document.getElementById('error#5')
-const errorNum6 = document.getElementById('error#6')
-const errorNum7 = document.getElementById('error#7')
+const errorNum1 = document.getElementById('error1')
+const errorNum2 = document.getElementById('error2')
+const errorNum3 = document.getElementById('error3')
+const errorNum4 = document.getElementById('error4')
+const errorNum5 = document.getElementById('error5')
+const errorNum6 = document.getElementById('error6')
+const errorNum7 = document.getElementById('error7')
 
 
 
@@ -243,13 +243,13 @@ termChecking(termAndCondition, errorNum7);
 //===== Sending form & message end =====
 ourForm.addEventListener('submit', function (event) {
 	event.preventDefault();
-	let firstNameValid = firstNameChecking (firstName);
-	let lastNameValid = lastNameChecking (lastName);
-	let mailValid = eMailChecking (eMailValid);
-	let dateValid = birthDateChecking (birthdateValid);
-	let numValid = numTournamentChecking (qtyTournament);
-	let radioValid = radioChecking (inputRadioTest);
-	let termValid = termChecking (termAndCondition);
+	let firstNameValid = firstNameChecking (firstName, errorNum1);
+	let lastNameValid = lastNameChecking (lastName, errorNum2);
+	let mailValid = eMailChecking (eMailValid, errorNum3);
+	let dateValid = birthDateChecking (birthdateValid, errorNum4);
+	let numValid = numTournamentChecking (qtyTournament, errorNum5);
+	let radioValid = radioChecking (inputRadioTest, errorNum6);
+	let termValid = termChecking (termAndCondition, errorNum7);
 
 	if((firstNameValid && lastNameValid && mailValid && dateValid && numValid && radioValid && termValid) === false){
 		e.preventDefault();
