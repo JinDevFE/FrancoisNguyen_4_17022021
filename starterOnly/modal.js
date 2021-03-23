@@ -107,21 +107,14 @@ function eMailChecking (eMailValid, error) {
 }	
 
 //===== Test for the input : birthdate =====
-// let date = "29/02/2001";
-//let dateArray = date.split('/');
-let isValid = false;
-
 function isValidDate(year, month, day) {
-    var d = new Date(year, month - 1 , day);
-    console.log(d.getFullYear(), d.getMonth(), d.getDate() )
+    let isValid = false;
+	var d = new Date(year, month - 1 , day);
+    console.log (d.getFullYear(), d.getMonth(), d.getDate());
     if (d.getFullYear() == year && d.getMonth() == (month - 1) && d.getDate() == day) {
-		isValid = true;
-		return isValid;
-		//error.style.display = "none"
+		return true;
     }
-	 isValid = false;
-	 return isValid;
-	//error.style.display = "block"
+	return false;
 }
 
 function birthDateChecking(elt, error){
@@ -136,26 +129,6 @@ function birthDateChecking(elt, error){
 		return true;
 	}
 }
-
-// console.log(date, isValidDate(dateArray[2], dateArray[1], dateArray[0]))
-
-/* function birthdateChecking (birthdateValid, error) {
-	console.log(birthdateValid.value);
-	const regexForBirthdate = RegExp (/^(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$/);
-	let isValid = false;
-	let regexBirthdateValid = regexForBirthdate.test (birthdateValid.value);
-	if (regexBirthdateValid) {
-		isValid = true;
-		error.style.display = "none"
-	}
-	else {
-		isValid = false;
-		error.style.display = "block"
-	}
-	console.log (isValid);	
-} */
-
-// \d{4}(\-)(((0)[0-9])|((1)[0-2]))(\-)([0-2][0-9]|(3)[0-1]$/)
 
 //===== Test for the input : quantity of tournaments =====
 function numTournamentChecking (qtyTournament, error) {
@@ -179,7 +152,7 @@ function radioChecking (inputs, error) {
 	let isValid = false;
 	inputs.forEach(input => {
 		if(input.checked){
-			isValid = true
+			isValid = true;
 			error.style.display = "none";
 		}
 	});
@@ -252,7 +225,7 @@ ourForm.addEventListener('submit', function (event) {
 	let termValid = termChecking (termAndCondition, errorNum7);
 
 	if((firstNameValid && lastNameValid && mailValid && dateValid && numValid && radioValid && termValid) === false){
-		e.preventDefault();
+		event.preventDefault();
 		return;
 	}
 	alert('Félicitation! Nous avons bien reçu votre inscription et nous vous confirmons votre réservation pour le prochain évènement Gaming. A bientôt!');
