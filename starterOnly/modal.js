@@ -132,7 +132,7 @@ function birthDateChecking(elt, error){
 
 //===== Test for the input : quantity of tournaments =====
 function numTournamentChecking (qtyTournament, error) {
-	const regexForNumTournament = RegExp (/^\d{2}$/);
+	const regexForNumTournament = RegExp (/^\d{1,2}$/);
 	let isValid = false;
 	let regexNumTournamentValid = regexForNumTournament.test (qtyTournament.value);
 	if (regexNumTournamentValid) {
@@ -207,7 +207,7 @@ function checkingAll () {
 
 /* checkingAll (); */
 
-/* document.getElementById('ourform').reset(); */
+/* document.getElementById('ourForm').reset(); */
 
 checkingAll ();
 radioChecking(inputRadioTest, errorNum6);
@@ -230,6 +230,7 @@ ourForm.addEventListener('submit', function (event) {
 	}
 	alert('Félicitation! Nous avons bien reçu votre inscription et nous vous confirmons votre réservation pour le prochain évènement Gaming. A bientôt!');
 	ourForm.requestFullscreen();
+	document.getElementById('ourForm').reset();
 	modalbg.style.display ="none";
 })
 
