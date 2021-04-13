@@ -12,7 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-const spanXtimes = document.getElementById("modalClose")
+const modalCloseX = document.getElementById("modalClose")
 const ourForm = document.getElementById("ourForm")
 
 const firstName = document.getElementById ("first")
@@ -40,20 +40,18 @@ const errorNum6 = document.getElementById('error6')
 const errorNum7 = document.getElementById('error7')
 
 
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-spanXtimes.addEventListener("click", function() {
-	modalbg.style.display = "none" 
-})
-
-
-
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
+
+
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+modalCloseX.addEventListener("click", function() {
+	modalbg.style.display = "none" 
+})
 
 
 
@@ -108,10 +106,12 @@ function eMailChecking (eMailValid, error) {
 
 //===== Test for the input : birthdate =====
 function isValidDate(year, month, day) {
-    let isValid = false;
-	var d = new Date(year, month - 1 , day);
+	let d = new Date(year, month - 1, day);
+	let now = new Date();
+	let limitAge = now.getFullYear() -12;
+	console.log(limitAge);
     console.log (d.getFullYear(), d.getMonth(), d.getDate());
-    if (d.getFullYear() == year && d.getMonth() == (month - 1) && d.getDate() == day) {
+    if (year >= 1900 && year <= limitAge && d.getFullYear() == year && d.getMonth() == (month - 1) && d.getDate() == day) {
 		return true;
     }
 	return false;
